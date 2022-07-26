@@ -1,0 +1,7 @@
+name: dog-service-internal
+
+server:
+  grpcPort: 3001
+
+log:
+  level: DEBUG

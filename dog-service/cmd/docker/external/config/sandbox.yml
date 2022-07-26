@@ -1,0 +1,8 @@
+name: dog-service-external
+
+grpc:
+  port: 3001
+  name: dog-service-internal
+
+log:
+  level: DEBUG

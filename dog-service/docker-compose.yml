@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+
+  # Services
+  dog-service-internal:
+    restart: always
+    build:
+      dockerfile: ./cmd/docker/grpc/Dockerfile
+      context: ./
+    ports:
+      - "3001:3001"
+    environment:
+      MICRO_SERVER_ADDRESS: ":3001"
+
+  dog-service-external:
+    restart: always
+    build:
+      dockerfile: ./cmd/docker/external/Dockerfile
+      context: ./
+    depends_on:
+      - dog-service-internal
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./images:/app/images
+    environment:
+      MICRO_SERVER_ADDRESS: ":3000"

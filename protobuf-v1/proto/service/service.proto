@@ -1,0 +1,22 @@
+syntax = "proto3";
+package protobuf.service;
+
+option go_package = "protobuf-v1/golang/service";
+
+message GetBreedRequest {
+  string name = 1;
+  int32 count = 2;
+}
+
+message Image {
+  bytes image = 1;
+  string name = 2;
+}
+
+message GetBreedResponse {
+  repeated Image images = 1;
+}
+
+service DogService {
+  rpc GetBreed(GetBreedRequest) returns (GetBreedResponse);
+}

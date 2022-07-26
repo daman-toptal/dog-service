@@ -1,0 +1,5 @@
+build-proto-service:
+	mkdir -p ./golang/service
+	protoc --go_out=./golang/  --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative  --go-grpc_out=./golang/ --proto_path=./proto ./proto/service/*.proto
+
+build-proto-all: build-proto-service 
